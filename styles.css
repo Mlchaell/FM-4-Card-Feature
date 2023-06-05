@@ -3,10 +3,10 @@
   --clr-red: hsl(0, 78%, 62%);
   --clr-cyan: hsl(180, 62%, 55%);
   --clr-orange: hsl(34, 97%, 64%);
-  --clr-blue: hsl(212, 87%, 55%);
+  --clr-blue: hsl(212, 87%, 53%);
 
   --clr-dark-blue: hsl(234, 12%, 34%);
-  --clr-blue: hsl(229, 6%, 66%);
+  --clr-gray-blue: hsl(229, 6%, 66%);
   --clr-light-gray: hsl(0, 0%, 98%);
 
   /* FONTS */
@@ -82,6 +82,7 @@ body {
 .header {
   display: flex;
   flex-direction: column;
+  place-items: center center;
   gap: 1rem;
 
   text-align: center;
@@ -106,6 +107,12 @@ body {
   max-width: 35ch;
 }
 
+@media only screen and (min-width: 1200px) {
+  .header__sub {
+    max-width: 60ch;
+  }
+}
+
 /*************************/
 /* Cards */
 
@@ -117,16 +124,47 @@ body {
   margin-top: 4rem;
 }
 
+@media only screen and (min-width: 1200px) {
+  .cards {
+    display: grid;
+    grid-template-areas: ". team ."
+                         "supervisor . calculator"
+                         ". karma .";
+    margin-top: 0rem;
+  }
+
+  .card-1 {
+    grid-area: supervisor;
+  }
+
+  .card-2 {
+    grid-area: team;
+    transform: translateY(50%);
+  }
+
+  .card-3 {
+    grid-area: karma;
+    transform: translateY(-50%);
+  }
+
+  .card-4 {
+    grid-area: calculator;
+  }
+}
+
 .cards__card {
   display: flex;
   flex-direction: column;
   gap: .5rem;
-  min-width: calc(100vw - 6rem);
+  /* min-width: 100%; */
+  max-width: calc(100vw - 6rem);
   min-height: 20rem;
 
-  box-shadow: 2px 6px 21px 1px rgba(0,0,0,0.42);
+  box-shadow: 2px 6px 21px 1px rgba(0,0,0,0.2);
   border-radius: 1rem;
   padding: 2rem;
+
+  position: relative;
 }
 
 .card__heading {
@@ -147,3 +185,50 @@ body {
   aspect-ratio: 1;
   place-self: end;
 }
+
+.card-1::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  height: 4px;
+  width: 100%;
+  background-color: var(--clr-cyan);
+  border-top-left-radius: 5rem;
+  border-top-right-radius: 5rem;
+}
+
+.card-2::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  height: 4px;
+  width: 100%;
+  background-color: var(--clr-red);
+  border-top-left-radius: 5rem;
+  border-top-right-radius: 5rem;
+}
+
+.card-3::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  height: 4px;
+  width: 100%;
+  background-color: var(--clr-orange);
+  border-top-left-radius: 5rem;
+  border-top-right-radius: 5rem;
+}
+
+.card-4::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  height: 4px;
+  width: 100%;
+  background-color: var(--clr-blue);
+  border-top-left-radius: 5rem;
+  border-top-right-radius: 5rem;}
